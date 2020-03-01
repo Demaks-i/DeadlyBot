@@ -22,6 +22,18 @@ bot.on('guildCreate', (guild) => {
     let channels = guild.channels.filter(channel => channel.type === 'text' && channel.permissionsFor(guild.members.get(bot.user.id)).has('SEND_MESSAGES'));
     if (channels.size > 0) channels.first().send('Приветствую! Спасибо, что пригласили меня на этот сервер!\nесли нужна Какета помощь обрашится к Deadly mail\nчтобы посмотреть мои команды надо всети команду /help\nмой префикс /\nесли че можно попасть на Support просто веди команду /info и там будет внизу сервер Support');
 });
+
+bot.on('message', async (message) => {
+    if(message.channel.id != "678948782989115403") return;
+    message.react(`✅`)
+    message.react(`❌`)
+    message.react(`💯`)
+    message.react(`🚧`)
+    message.react(`📁`)
+    message.react(`💡`)
+    message.react(`🔥`)
+    })
+
 bot.on("guildCreate", async(guild) =>{
    
   let nserv = new Discord.RichEmbed()
