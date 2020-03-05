@@ -24,7 +24,7 @@ bot.on('guildCreate', (guild) => {
 });
 
 bot.on('message', async (message) => {
-    if(message.channel.id != "678948782989115403") return;
+    if(message.channel.id != "660495073233993738") return;
     message.react(`✅`)
     message.react(`❌`)
     message.react(`💯`)
