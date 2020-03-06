@@ -18,7 +18,7 @@ module.exports.run = async (bot, message, args) => {
    .addField("Баг: ", sayMessage)
    .setTimestamp()
 
-    bot.users.get("СЮДА СВОЙ АЙДИ ТЫКНИТЕ").send(contact);
+    bot.users.get("587613001020997663").send(contact);
 
     let embed = new Discord.RichEmbed()
     .setColor("#00ff00")
