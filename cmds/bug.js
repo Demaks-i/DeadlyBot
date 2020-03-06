@@ -1,27 +1,38 @@
+держи баг 
 const Discord = require("discord.js");
-
-
+const fs = require("fs");
 module.exports.run = async (bot, message, args) => {
-    let rreason = args.join(" ").slice(22);
-    if(!rreason) return message.channel.send("Введите баг");
+
+    let Invite = await message.guild.channels.find((c) => c.type === 'text').createInvite()
+    let Sender = message.author;
+    const sayMessage = args.join(" ");
+    if(!sayMessage) return message.channel.send("Укажите баг").then(msg => {msg.delete(5000)});
+
+   let contact = new Discord.RichEmbed()
+   .setColor("#ff0f00")
+   
+   .setThumbnail(Sender.displayAvatarURL)
+   .setDescription(`[${message.guild.name}](${Invite.url})`)
+   .setTitle("Сервер:")
+   .addField("Отправитель", Sender, true)
+   .addField("ID отправителя: ", Sender.id, true)
+   .addField("Баг: ", sayMessage)
+   .setTimestamp()
+
+    bot.users.get("СЮДА СВОЙ АЙДИ ТЫКНИТЕ").send(contact);
 
     let embed = new Discord.RichEmbed()
-    .setColor('#800080')
-    .addField("📝Баг от", `${message.author} with ID: ${message.author.id}`)
-    .addField("📢Канал", message.channel)
-    .addField("📄Сам баг", rreason)
+    .setColor("#00ff00")
+    .setTitle("Баг успешно отправлен!")
+    .addField("Запрошено", Sender)
+    .addField("Баг: ", sayMessage)
+    .setFooter("Мы рассмотрим вашу проблему")
 
-    let okaydm = new Discord.RichEmbed()
-    .setColor('#800080')
-        .addField(`Возможно ваш баг  будет исправлен!`)
-        message.channel.send(okaydm)
-let rpchannel = message.guild.channels.find('name', 'bugs')
-if(!rpchannel) return message.channel.send("Не удалось найти канал для отчетов");
-rpchannel.send(embed)
+    message.channel.send(embed);
 
-}
 
+      }
 module.exports.help = {
-  name: "bug",
-  aliases: []
+    name: "bug",
+    aliases: ["баг"]
 }
