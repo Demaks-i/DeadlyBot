@@ -15,7 +15,11 @@ module.exports.run = async (bot,message,args) => {
 **/invite**-пригласить бота на сервер
 **/8ball (вопрос)**- задать вопрос
 **/bug (баг) (повтор бага)**-ваш баг
-**/ava [@user]**-аватар юзера `)
+**/ava [@user]**-аватар юзера
+**/profile [@user]**- профиль человека 
+
+[Наш сайт](https://deadly-bot.glitch.me/) 
+`)
 .setFooter(message.author.tag,message.author.avatarURL)
 message.channel.send(embed)
 }
