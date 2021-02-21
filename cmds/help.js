@@ -16,10 +16,8 @@ module.exports.run = async (bot,message,args) => {
 **/8ball (вопрос)**- задать вопрос
 **/bug (баг) (повтор бага)**-ваш баг
 **/ava [@user]**-аватар юзера
-**/profile [@user]**- профиль человека 
-
-[Наш сайт](https://deadly-bot.glitch.me/) 
-`)
+**/profile [@user]**- профиль человека `)
+.addField("Сайт бота:", "[Наш сайт](https://deadly-bot.glitch.me/)")
 .setFooter(message.author.tag,message.author.avatarURL)
 message.channel.send(embed)
 }
